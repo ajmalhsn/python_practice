@@ -31,9 +31,86 @@ print(str2)
 print(str3)
 
 str = "Hello"
-print(str[0]) # first letter from left
-print(str[-1]) # first letter from right
-print(str[0:2]) # starts from 0 to 2 
-print(str[:2]) # starts from 0 to 2
-print(str[2:]) # starts from 2 till end
-print(str[::-1]) # reverse the string
+# print(str[0]) # first letter from left
+# print(str[-1]) # first letter from right
+# print(str[0:2]) # starts from 0 to 2 
+# print(str[:2]) # starts from 0 to 2
+# print(str[2:]) # starts from 2 till end
+print(str[::-2]) # reverse the string
+
+
+# strings are immutable
+# str = "Python"
+# str[0] = 'H'
+
+str = "Python"
+
+str1 = "p" + str[1:]
+print(str1)
+
+str1 = "Hello"
+str2 = "World"
+print(str1 + " " + str2)
+print(str1 * 3) # makes the string appears 3 times
+
+
+print("Py" in "Python")
+print("Java" not in "Python")
+str = "Python"
+for ch in str:
+    print(ch)
+
+str = "DataScience"
+msg = f"welcome to {str}"
+print(msg)
+
+
+print("Hello\nWorld")
+print("Hello\tWorld")
+print("Welcome to \"Data Science\"")
+print("it\'s a Data Science course")
+print("C:\\Users\\Python")
+
+str = "python"
+new_str = str.replace("p","y")
+print(new_str)
+print(str)
+
+#Booleans
+
+#True - 1
+#False - 0 
+flag1 = True
+flag2 = False
+
+print(flag1)
+print(flag2)
+print(flag1 + 1)
+print(flag1 + flag2)
+
+age=18
+if age>= 18:
+    print("Major !!!")
+else:
+    print("Minor !!!")
+
+print("Major" if age>18 else "Minor")         
+
+#None ---> No Value / Nothing / "Empty but not zero"
+
+x = None
+print(x)
+print(type(x))
+
+# list
+# collection of elements
+#hetrogenous
+# Duplicates
+# Ordered
+# mutable
+list1 = [10,50,20,30,40, "Hello", 'h1']
+list1.append(60)
+print(list1)
+list2 = [10,20,30,40,50]
+print(list2[1])
+print(list2[-4])
