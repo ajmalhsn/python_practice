@@ -103,6 +103,7 @@ print(x)
 print(type(x))
 
 # list
+# []
 # collection of elements
 #hetrogenous
 # Duplicates
@@ -114,3 +115,51 @@ print(list1)
 list2 = [10,20,30,40,50]
 print(list2[1])
 print(list2[-4])
+
+# tuple
+# collection of elements
+# ()
+#hetrogenous
+# Duplicates
+# Ordered
+# immutable
+tuple1 = ("Hello", "my Name is ", 20,30,40,60, True, 10.1)
+print(tuple1)
+
+
+# dictionary
+# key and value
+d1 = {
+    "name": "Value",
+    "sub": "Gen AI",
+    "cloud": "MLops, LLM"
+}
+print(d1["name"])
+d1["sub"] = "Gen AI and agentic AI"
+print(d1["sub"])
+del d1["sub"]
+print(d1)
+
+# Set
+# collection of elements
+# {}
+# no duplicates
+# no order
+# Hetrogenous
+
+s1 = {2,2,2,3,1,1,1,6,6,6, None, "Hello"}
+print(s1)
+print(type(s1))
+print(len(s1))
+
+# int
+# float
+# str
+# list
+# boolean
+# tuple
+# dict
+# None
+# set
+
+
