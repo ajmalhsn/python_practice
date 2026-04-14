@@ -182,5 +182,8 @@ def student(**data): # ** will create dictionary internally
 
 student(name="Std1",marks=90)
 # output: {'name': 'Std1', 'marks': 90}
+nums = [5,12,8,20]
+avg = sum(nums)/len(nums)
+print(avg)
 
 
