@@ -159,33 +159,179 @@ print(f'{t1.name}')   # output hello
 
 # Example 10
 # Single Level Inheritance
+# class Parent:
+#     def test1(self):
+#         print("Parent....!")
+
+# class Child(Parent):
+#     def test2(self):
+#         print("Child...!")
+
+# obj = Child()
+# obj.test1()   
+# obj.test2()
+
+# # Example 11
+# # Multi Level Inheritance
+# class Parent:
+#     def test1(self):
+#         print("Parent")
+
+# class Child(Parent):
+#     def test2(self):
+#         print("Child")
+
+# class Subchild(Child):
+#     def test3(self): 
+#         print("SubChild")       
+
+# obj2 = Subchild()
+# obj2.test1()
+# obj2.test2()
+# obj2.test3()
+# # Example 12
+# # Multiple Inheritance
+# # If function is available in Parent 1 it will execute the fn over there. If not available in Parent1 
+# # then it will look into Parent 2 
+# class Parent1:
+#     def test(self):
+#         print("Parent1")
+
+# class Parent2:
+#     def test(self):
+#         print("Parent2")
+
+# class Child(Parent1,Parent2):
+#     pass
+
+# t1 = Child()
+# t1.test()
+
+# Polymorphism
+# Behaves like many
+# Overriding
+# Overloading
+
+
+# Example 13
+# overriding parent class functionality with child class functionality
+class Parent:
+    def db_conn(self):
+        print("SQL conn soon...!")
+
+class Child(Parent):
+    def db_conn(self):
+        print("No SQL Conn soon...!")
+
+obj2 = Child()
+obj2.db_conn()
+
+# Overloading 
+# Python doesn't support overloading but this functionality mimics what is function overloading
+# class Test:
+#     def addition(self,a,b=0,c=0):
+#         print(a + b + c)
+
+# obj = Test()
+# obj.addition(10)
+# obj.addition(10,20)
+# obj.addition(10,20,30)
+
+# Example-15
+# Overloading
+class Test:
+    def addition(self,*args):
+        print(sum(args))
+
+obj = Test()
+obj.addition(10,10)
+obj.addition(10,20)
+obj.addition(10,40,60,70)
+obj.addition(10,80,90,100,200)
+
+# # Example - 16
+# class Test:
+#     def addition(self, num1=None,num2=None,num3=None):
+#         if num1 and num2 and num3:
+#             print(num1 + num2 + num3)
+#         elif num1 and num2:
+#             print(num1 + num2)
+#         elif num1:
+#             print(num1)
+#         else:
+#             print(0)    
+
+# obj = Test()
+# obj.addition(10)   
+# obj.addition(10,20)   
+# obj.addition(10,20,40)            
+# obj.addition()         
+# Example 17
+# __add__ is predefined function and it will break object n1 and get value and then add the value of n2's object
+class Test:
+    def __init__(self,num1):
+        self.num1 = num1
+    def __add__(self,other):
+        return self.num1 + other.num1
+
+n1 = Test(10)
+n2 = Test(60)
+print(n1 + n2)
+# Example 18
+# Dunder Methods
+# If we don't use __str__() then it will give hashcode for Test Object
+# If we use the __str__() then it will override the hashcode and return whatever message we want to say
+class Test:
+    def __str__(self):
+        return "Welcome"
+
+obj = Test()
+print(obj)
+
+# if we know the function name but don't know implementation then we call the method as abstract method
+# Decorator @abstractmethod is added to function to make it abstract
+
+from abc import ABC,abstractmethod
+
+class Business(ABC):
+    @abstractmethod
+    def start_business(self):
+        pass
+    def make_docs(self):
+        print("make necessary docs")    
+class Friend(Business):
+    def start_business(self):
+        print("Initiate AI startup company")
+    
+
+obj = Friend()
+obj.start_business()        
+obj.make_docs()
+
+# Example 20
+# self - instance methods 
+# cls - class methods
+# nothing present in function paramter then it is static method
 class Parent:
     def test1(self):
-        print("Parent....!")
+        print("hello")
 
 class Child(Parent):
     def test2(self):
-        print("Child...!")
+        return super().test1()
 
 obj = Child()
-obj.test1()   
-obj.test2()
+obj.test2()        
 
-# Example 11
-# Multi Level Inheritance
+# Example 21
 class Parent:
-    def test1(self):
-        print("Parent")
+    def __init__(self, param1):
+        self.param1 = param1
 
 class Child(Parent):
-    def test2(self):
-        print("Child")
+    def __init__(self,param1, param2):
+        super().__init__(param1)
+        self.param2 = param2
 
-class Subchild(Child):
-    def test3(self): 
-        print("SubChild")       
-
-obj2 = Subchild()
-obj2.test1()
-obj2.test2()
-obj2.test3()
+obj = Child(200,300)
+print(obj.param1 + obj.param2)
