@@ -215,16 +215,16 @@ print(f'{t1.name}')   # output hello
 
 # Example 13
 # overriding parent class functionality with child class functionality
-class Parent:
-    def db_conn(self):
-        print("SQL conn soon...!")
+# class Parent:
+#     def db_conn(self):
+#         print("SQL conn soon...!")
 
-class Child(Parent):
-    def db_conn(self):
-        print("No SQL Conn soon...!")
+# class Child(Parent):
+#     def db_conn(self):
+#         print("No SQL Conn soon...!")
 
-obj2 = Child()
-obj2.db_conn()
+# obj2 = Child()
+# obj2.db_conn()
 
 # Overloading 
 # Python doesn't support overloading but this functionality mimics what is function overloading
@@ -239,15 +239,15 @@ obj2.db_conn()
 
 # Example-15
 # Overloading
-class Test:
-    def addition(self,*args):
-        print(sum(args))
+# class Test:
+#     def addition(self,*args):
+#         print(sum(args))
 
-obj = Test()
-obj.addition(10,10)
-obj.addition(10,20)
-obj.addition(10,40,60,70)
-obj.addition(10,80,90,100,200)
+# obj = Test()
+# obj.addition(10,10)
+# obj.addition(10,20)
+# obj.addition(10,40,60,70)
+# obj.addition(10,80,90,100,200)
 
 # # Example - 16
 # class Test:
@@ -268,70 +268,166 @@ obj.addition(10,80,90,100,200)
 # obj.addition()         
 # Example 17
 # __add__ is predefined function and it will break object n1 and get value and then add the value of n2's object
-class Test:
-    def __init__(self,num1):
-        self.num1 = num1
-    def __add__(self,other):
-        return self.num1 + other.num1
+# class Test:
+#     def __init__(self,num1):
+#         self.num1 = num1
+#     def __add__(self,other):
+#         return self.num1 + other.num1
 
-n1 = Test(10)
-n2 = Test(60)
-print(n1 + n2)
-# Example 18
-# Dunder Methods
-# If we don't use __str__() then it will give hashcode for Test Object
-# If we use the __str__() then it will override the hashcode and return whatever message we want to say
-class Test:
-    def __str__(self):
-        return "Welcome"
+# n1 = Test(10)
+# n2 = Test(60)
+# print(n1 + n2)
+# # Example 18
+# # Dunder Methods
+# # If we don't use __str__() then it will give hashcode for Test Object
+# # If we use the __str__() then it will override the hashcode and return whatever message we want to say
+# class Test:
+#     def __str__(self):
+#         return "Welcome"
 
-obj = Test()
-print(obj)
+# obj = Test()
+# print(obj)
 
-# if we know the function name but don't know implementation then we call the method as abstract method
-# Decorator @abstractmethod is added to function to make it abstract
+# # if we know the function name but don't know implementation then we call the method as abstract method
+# # Decorator @abstractmethod is added to function to make it abstract
 
-from abc import ABC,abstractmethod
+# from abc import ABC,abstractmethod
 
-class Business(ABC):
-    @abstractmethod
-    def start_business(self):
-        pass
-    def make_docs(self):
-        print("make necessary docs")    
-class Friend(Business):
-    def start_business(self):
-        print("Initiate AI startup company")
+# class Business(ABC):
+#     @abstractmethod
+#     def start_business(self):
+#         pass
+#     def make_docs(self):
+#         print("make necessary docs")    
+# class Friend(Business):
+#     def start_business(self):
+#         print("Initiate AI startup company")
     
 
-obj = Friend()
-obj.start_business()        
-obj.make_docs()
+# obj = Friend()
+# obj.start_business()        
+# obj.make_docs()
 
-# Example 20
-# self - instance methods 
-# cls - class methods
-# nothing present in function paramter then it is static method
-class Parent:
-    def test1(self):
-        print("hello")
+# # Example 20
+# # self - instance methods 
+# # cls - class methods
+# # nothing present in function paramter then it is static method
+# class Parent:
+#     def test1(self):
+#         print("hello")
 
-class Child(Parent):
-    def test2(self):
-        return super().test1()
+# class Child(Parent):
+#     def test2(self):
+#         return super().test1()
 
-obj = Child()
-obj.test2()        
+# obj = Child()
+# obj.test2()        
 
-# Example 21
-class Parent:
-    def __init__(self, param1):
-        self.param1 = param1
+# # Example 21
+# class Parent:
+#     def __init__(self, param1):
+#         self.param1 = param1
 
-class Child(Parent):
-    def __init__(self,param1, param2):
-        super().__init__(param1)
-        self.param2 = param2
+# class Child(Parent):
+#     def __init__(self,param1, param2):
+#         super().__init__(param1)
+#         self.param2 = param2
 
-obj = Child(200,300)
-print(obj.param1 + obj.param2)
+# class Parent:
+#     def __init__(self, param1):
+#         self.param1 = param1
+#     def print1(self,param2):
+#         print(f"Parent {param2}")   
+
+# class Child(Parent):
+#     def __init__(self,param1, param2):
+#         super().__init__(param1)
+#         self.param2 = param2
+#     def printChild(self):
+#         if(self.param2 >= 300):
+#             super().print1(self.param2)    
+
+# obj = Child(200,500)
+# obj.printChild()
+# print(obj.param1 + obj.param2)
+
+# # static methods
+# # won't use cls or self 
+# # inside the class with the help of @staticmethod
+# # we will call with the help of "Class Names"
+# # utility methods (general purpose methods Ex. validations....)
+# # Example 22
+# class Test:
+#     @staticmethod
+#     def greet():
+#         print("welcome to Static Methods")
+# obj = Test()
+# obj.greet()
+# Test.greet()        
+class MathUtils:
+    @staticmethod
+    def square(num1):
+        return num1**2
+    @staticmethod
+    def cube(num2):
+        return num2**3
+
+obj4 = MathUtils()
+print(obj4.cube(2))    
+
+"""
+         instance                class           static
+self        yes                     no              no
+
+cls         no                      yes             no
+
+usecase     object related      the variable        common logic / utility logic                                                       
+            task                 will be shared         helper logic
+                                    
+decorator   no                  @classmethod        @staticmethod
+
+
+access      yes                     no              no
+object data
+"""
+
+# class Test:
+#     cmp_name = "Oracle...!"
+
+#     def __init__(self,name,name2):
+#         self.name = name
+#         self.cmp_name = name2
+
+#     #instance method
+#     def test1(self):
+#         print(self.name)
+#         print(self.cmp_name)
+
+#     @classmethod    
+#     def change_comp(cls,new_cmp):
+#         cls.cmp_name = new_cmp 
+
+#     @staticmethod
+#     def isMajor(age):
+#         return age >=18    
+
+# obj = Test("Microsoft","NewCompany")
+# ob2 = Test("Microsoft","New Company")        
+# Test.change_comp("Apple......!")
+# obj.test1()   
+# ob2.test1()
+
+# print(f"Class Variable : {Test.cmp_name}")
+
+# print(Test.isMajor(19))
+
+# Class
+# Object
+# Instance
+# cls 
+# static
+# abstract
+# inhertiance
+# polymorphism
+# super()
+# Dunder Methods
