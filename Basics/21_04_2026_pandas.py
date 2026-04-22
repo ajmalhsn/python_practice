@@ -65,3 +65,56 @@ print(excel_df.bfill())
 
 print(excel_df["Age"].fillna(excel_df["Age"].mean()))
 
+
+df = pd.read_csv("emps.csv")
+# read single col
+print(df["name"])
+# read multiple col
+print(df[["name","age"]])
+# read single value
+print(df.loc[0,"name"])
+
+df["bonus"] = df["salary"] * 0.10
+
+print(df)
+
+df.drop("bonus",axis=1,inplace=True)
+
+print(df)
+
+df1 = pd.read_csv("emps.csv")
+df2 = pd.read_csv("department.csv")
+
+merged_df = pd.merge(df1,df2)
+print(merged_df)
+
+print(merged_df.groupby("department")["salary"].mean())
+print(merged_df.groupby("department")["salary"].min())
+print(merged_df.groupby("department")["salary"].max())
+
+print(merged_df.sort_values(by="salary"))
+print(merged_df.sort_values(by="salary",ascending=False))
+
+print(merged_df[merged_df["salary"] > 50000])
+
+df = pd.read_csv("students.csv")
+# check missing values represented with True
+print(df.isnull())
+
+# count of missing values (col wise)
+print(df.isnull().sum())
+
+# if any row contain null it will be deleted
+#print(df.dropna(inplace=True))
+print(df)
+#df.fillna("marks",0,inplace=True)
+# df["marks"] = df["marks"].fillna(0,inplace=True)
+# print(df)
+# if any value is null value then the value is filled by previous value
+df["marks"] = df["marks"].ffill()
+print(df)
+# if any value is null then the value is filled by the next value after the null value
+df["marks"] = df["marks"].bfill()
+print(df)
+# replace the values in the data frame
+print(df.replace("Hyderabad", "HYD", inplace=True))
